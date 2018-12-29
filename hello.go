@@ -8,7 +8,7 @@ var c bool
 func main() {
 	fmt.Println("Hello, go!")
 
-	// 这种不带声明格式的只能在函数体中出现
+	// f这种不带声明格式的只能在函数体中出现
 	b := "runoob.com"
 	d, e, f := 1, 2, 3
 
