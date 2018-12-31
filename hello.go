@@ -13,4 +13,13 @@ func main() {
 	d, e, f := 1, 2, 3
 
 	println(a, b, c, d, e, f)
+
+	arr1 := [3] int {10, 20, 30}
+	arr2 := [...] int {10, 20, 30, 40}
+	arr3 := [2][3] int {
+		{11, 12, 13},
+		{21, 22, 23},
+	}
+
+	fmt.Println(arr1, arr2, arr3[0][0])
 }
