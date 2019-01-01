@@ -20,6 +20,6 @@ func main() {
 func printHelloWorld(i int, ch chan string) {
 	// fmt.Println("Hello Conc from goroutine $d!", i)
 	for {
-		ch <- fmt.Sprintf("Hello world from " + "goroutine %d!\n", i)
+		ch <- fmt.Sprintf("Hello Conc from " + "goroutine %d!\n", i)
 	}
 }
