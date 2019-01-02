@@ -1,8 +1,27 @@
 package main
 
 import "fmt"
+// interface
+type Adder interface {
+	add() int
+}
+
+type MyStruct struct {
+	X, Y int
+}
+
+func (a *MyStruct) add() int { // method method 就是函数，只不过拥有 receiver 参数，receiver 写在 func 和 method 名字之间
+	return a.X + a.Y
+}
 
 func main() {
+	// pointer
+	fmt.Println("--------------", "pointer")
+	foo1 := 100
+	var foo1p *int // pointer 声明 使用*
+	foo1p = &foo1 // pointer 赋值 使用&
+	fmt.Println(foo1p, *foo1p) // 使用*可以读取指针指向的值
+
 	// array
 	fmt.Println("--------------", "array")
 	var arr1 [3]int // array 声明
@@ -119,10 +138,10 @@ func main() {
 	}
 	fmt.Println(book2.title)
 
-	// pointer
-	fmt.Println("--------------", "pointer")
-	foo1 := 100
-	var foo1p *int // pointer 声明 使用*
-	foo1p = &foo1 // pointer 赋值 使用&
-	fmt.Println(foo1p, *foo1p) // 使用*可以读取指针指向的值
+	// interface
+	fmt.Println("--------------", "interface")
+	var f Adder
+	s := MyStruct{3, 4}
+	f = &s
+	fmt.Println(f.add())
 }
