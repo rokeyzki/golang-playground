@@ -14,6 +14,11 @@ func (a *MyStruct) add() int { // method method 就是函数，只不过拥有 r
 	return a.X + a.Y
 }
 
+// pointer
+func swap(a, b *int) {
+	*b, *a = *a, *b
+}
+
 func main() {
 	// pointer
 	fmt.Println("--------------", "pointer")
@@ -21,6 +26,10 @@ func main() {
 	var foo1p *int // pointer 声明 使用*
 	foo1p = &foo1 // pointer 赋值 使用&
 	fmt.Println(foo1p, *foo1p) // 使用*可以读取指针指向的值
+
+	a, b := 11, 22
+	swap(&a, &b)
+	fmt.Println(a, b)
 
 	// array
 	fmt.Println("--------------", "array")
