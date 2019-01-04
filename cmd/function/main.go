@@ -2,12 +2,14 @@
 func
 method
 interface
+package
 */
 package main
 
 import (
 	"fmt"
 	"time"
+	pkg1 "./foo"
 )
 
 // func
@@ -88,7 +90,7 @@ type St1 struct {
 	x, y int
 }
 
-func (s St1) method1(z int) int {
+func (s St1) Method1(z int) int { // Go 语言只有一种控制可见性的手段：大写首字母的标识符会从定义它们的包中被导出，小写字母的则不会。
 	sum := s.x + s.y + z
 	return sum // method 必须有 return
 }
@@ -97,7 +99,7 @@ type St2 struct {
 	x, y int
 }
 
-func (s *St2) method2(z int) int {
+func (s *St2) method2(z int) int { // 一个struct类型的字段对同一个包的所有代码都有可见性，无论你的代码是写在一个函数还是一个方法里
 	sum := s.x + s.y + z
 	return sum
 }
@@ -133,8 +135,14 @@ func main()  {
 	// method
 	fmt.Println("--------------", "method")
 	s1 := St1{1, 2}
-	fmt.Println("method1", s1.method1(3))
+	fmt.Println("method1", s1.Method1(3))
 
 	s2 := &St2{1, 2}
 	fmt.Println("method2", s2.method2(3))
+
+	fmt.Println("method3", OtherMethod1()) // go run .
+
+	// package
+	fmt.Println("--------------", "package")
+	fmt.Println("pkg1", pkg1.ReturnStr())
 }
